@@ -9,6 +9,3 @@ Maven 3.x
 
 --- Installation Instructions ---
 'mvn install', then point your browser to megman-yahtzee.html
-
----Sprite Credits---
-http://www.sprites-inc.co.uk
