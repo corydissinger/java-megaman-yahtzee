@@ -1,7 +1,10 @@
 package main.java.ui;
 /**
  * WaitMenu for single game use. Displays what the AI did.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -22,7 +25,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class WaitMenu extends JPanel implements ActionListener
 {
   private Yahtzee controller;
@@ -34,9 +36,9 @@ public class WaitMenu extends JPanel implements ActionListener
   
   /**
    * Constructor for WaitMenu, accepts a Yahtzee controller as a parameter.
-   * 
-   * @param jApp the Yahtzee controller.      
-   */     
+   *
+   * @param jApp the Yahtzee controller.
+   */
   public WaitMenu(Yahtzee jApp)
   {
     controller = jApp;
@@ -83,9 +85,9 @@ public class WaitMenu extends JPanel implements ActionListener
   
   /**
    * Sets the text area with the AI's turn information.
-   * 
-   * @param message The AI's plays.      
-   */     
+   *
+   * @param message The AI's plays.
+   */
   public void setTextArea(String message)
   {
     turnInformation.setText(null);
@@ -94,11 +96,11 @@ public class WaitMenu extends JPanel implements ActionListener
     validate();  
   }
  
- /**
-  * Overloaded actionPerformed method. Waits for the player to click next turn.
-  * 
-  * @param e The triggered ActionEvent.    
-  */    
+  /**
+   * {@inheritDoc}
+   *
+   * Overloaded actionPerformed method. Waits for the player to click next turn.
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

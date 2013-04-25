@@ -2,7 +2,10 @@ package main.java.ui;
 /**
  * GameLog is a class that stores recent actions of all players currently active.
  * A player can view this log at anytime by clicking on Options.
- */  
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -24,7 +27,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class GameLog extends JPanel implements ActionListener
 {
   private Yahtzee controller;
@@ -41,7 +43,7 @@ public class GameLog extends JPanel implements ActionListener
    * GameLog constructor. Initializes components, takes in a Yahtzee controller.
    *
    * @param jApp The yahtzee controller.
-   */           
+   */
   public GameLog(Yahtzee jApp)
   {
     controller = jApp;
@@ -100,13 +102,12 @@ public class GameLog extends JPanel implements ActionListener
     validate();
   }
  
- /**
-  * Used in single games. Takes the results of the turn and adds them to the messages.
-  * 
-  * @param turnResults A short message entailing turn history.
-  * 
-  * @param playerName The player who just went.
-  */            
+  /**
+   * Used in single games. Takes the results of the turn and adds them to the messages.
+   *
+   * @param turnResults A short message entailing turn history.
+   * @param playerName The player who just went.
+   */
   public void addTurnInfo(String turnResults, String playerName)
   {
     entryText.append("Turn " + turnCounter + " - Player Name: " + playerName + "\n");
@@ -117,7 +118,7 @@ public class GameLog extends JPanel implements ActionListener
   
   /**
    * Used in multi games. Grabs all recent messages from the server.
-   */        
+   */
   public void addInfoFromServer()
   { 
     Vector<String> temp = new Vector<String>();
@@ -133,10 +134,10 @@ public class GameLog extends JPanel implements ActionListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed. Returns to the game when invoked.
-   * 
-   * @param e The ActionEvent triggered.
-   */           
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

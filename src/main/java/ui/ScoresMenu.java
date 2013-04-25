@@ -1,7 +1,10 @@
 package main.java.ui;
 /**
  * ScoresMenu provides a way for the user to view other player's scores.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.CardLayout;
@@ -27,7 +30,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class ScoresMenu extends JPanel implements ActionListener, ItemListener
 {
   private Yahtzee controller;
@@ -41,9 +43,9 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   
   /**
    * Constructor for ScoresMenu. Accepts a Yahtzee controller.
-   * 
+   *
    * @param jApp The Yahtzee controller.
-   */           
+   */
   public ScoresMenu(Yahtzee jApp)
   {
     controller = jApp;
@@ -120,9 +122,9 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   
   /**
    * Creates a score panel for each player and adds them to the card layout.
-   * 
-   * @param scoreInfo A mapping of player names to score mappings.      
-   */     
+   *
+   * @param scoreInfo A mapping of player names to score mappings.
+   */
   public void setupScorePanels(TreeMap<String, TreeMap<String, Integer>> scoreInfo)
   {
     int index = 0;
@@ -157,10 +159,10 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   
   /**
    * Creates a title label for each player, using their name.
-   * 
+   *
    * @param name The player's name.
-   * @return A JLabel with their name.         
-   */     
+   * @return A JLabel with their name.
+   */
   public JLabel createTitleLabel(String name)
   {
     JLabel title = new JLabel(name);
@@ -176,10 +178,11 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   
   /**
    * Using a player's scores, sets up the entire panel to show their scores.
-   * 
+   *
    * @param comboPoints The player's score mapping.
-   * @return JPanel with scoring information.            
-   */     
+   * @return JPanel with scoring information.
+   * @param name a {@link java.lang.String} object.
+   */
   public JPanel createScorePanel(String name, TreeMap<String, Integer> comboPoints)
   {    
     JPanel upperScoresPanel = new JPanel(new GridBagLayout());
@@ -360,11 +363,11 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
    
   /**
    * Saves lines of code by setting all label sizes at once.
-   * 
+   *
    * @param label The JLabel to be resized.
    * @param width The width.
    * @param height The height.
-   */                 
+   */
   public void setLabelSize(JLabel label, int width, int height)
   {
     label.setSize(new Dimension(width, height));
@@ -374,10 +377,10 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed, returns to the main game when back is pressed.
-   * 
-   * @param e The triggered ActionEvent.      
-   */     
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());
@@ -387,10 +390,10 @@ public class ScoresMenu extends JPanel implements ActionListener, ItemListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded itemStateChanged, flips through the card layout based on what's chosen.
-   * 
-   * @param e Triggered ItemEvent.      
-   */     
+   */
   public void itemStateChanged(ItemEvent e)
   {
     CardLayout scoresLayout = (CardLayout)(scoresPanel.getLayout());

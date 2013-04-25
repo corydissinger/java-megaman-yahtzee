@@ -1,7 +1,10 @@
 package main.java.ui;
 /**
  * This is the menu the player first sees, and allows them to setup initial game information.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.BorderLayout;
@@ -29,7 +32,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class StartMenu extends JPanel implements ActionListener
 {
   private int numPlayers;
@@ -46,9 +48,9 @@ public class StartMenu extends JPanel implements ActionListener
 
   /**
    * Constructor. Accepts a Yahtzee controller as a parameter.
-   * 
-   * @param jApp The Yahtzee controller.      
-   */     
+   *
+   * @param jApp The Yahtzee controller.
+   */
   public StartMenu(Yahtzee jApp)
   {   
     super(new BorderLayout(5,5)); 
@@ -135,16 +137,21 @@ public class StartMenu extends JPanel implements ActionListener
     setVisible(true);
   }
      
+  /**
+   * <p>gameReady.</p>
+   *
+   * @return a boolean.
+   */
   public boolean gameReady()
   {
     return false;
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed method. Waits for a continue command, then starts the game.
-   * 
-   * @param e The triggered ActionEvent.      
-   */     
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

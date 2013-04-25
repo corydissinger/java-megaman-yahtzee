@@ -2,7 +2,10 @@ package main.java.ui;
 /**
  * AnimationMenu acts as a canvas for any applet drawing. Uses mouse listener
  * to exit.
- */  
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.BorderLayout;
@@ -18,7 +21,6 @@ import javax.swing.JPanel;
 
 import main.java.game.SpriteManager;
 import main.java.game.Yahtzee;
-
 public class AnimationMenu extends JPanel implements MouseListener
 {
   private Yahtzee controller;
@@ -27,11 +29,10 @@ public class AnimationMenu extends JPanel implements MouseListener
   
   /**
    * Constructor for AnimationMenu.
-   * 
+   *
    * @param jApp The controlling JApplet.
-   * 
    * @param sm SpriteManager responsible for providing images.
-   */                 
+   */
   public AnimationMenu(Yahtzee jApp, SpriteManager sm) 
   {
     super(new BorderLayout());
@@ -50,7 +51,7 @@ public class AnimationMenu extends JPanel implements MouseListener
   
   /**
    * Creates a new thread that drives animation.
-   */     
+   */
   public void startAnimation()
   {
     Thread t = new Thread(new Animator());
@@ -85,33 +86,37 @@ public class AnimationMenu extends JPanel implements MouseListener
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Overloaded mouseClicked method, quits the animation menu.
-   * 
-   * @param e The moust event triggered.
-   */           
+   */
   public void mouseClicked(MouseEvent e)
   {
     animating = false;
     controller.returnFromAnimation();    
   }
   
+  /** {@inheritDoc} */
   public void mouseExited(MouseEvent e)
   {}
   
+  /** {@inheritDoc} */
   public void mouseEntered(MouseEvent e)
   {}
   
+  /** {@inheritDoc} */
   public void mouseReleased(MouseEvent e)
   {}
   
+  /** {@inheritDoc} */
   public void mousePressed(MouseEvent e)
   {}
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded paint method. Paints according to what is stored in SpriteManager.
-   * 
-   * @param g Graphics object.
-   */           
+   */
   public void paint(Graphics g)
   {
     super.paint(g);

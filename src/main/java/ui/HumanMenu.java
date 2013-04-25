@@ -1,13 +1,14 @@
 package main.java.ui;
 /**
  * HumanMenu is presented to Human players. It extends JPanel.
- * 
+ *
  * HumanMenu uses ActionListener to take events from the Dice JButtons, the
  * Take Dice and Roll Dice Buttons, and the JRadioButtons showing available
- * scores to facilitate gameplay.   
- *  
- * @author Cory Dissinger  
- */ 
+ * scores to facilitate gameplay.
+ *
+ * @author Cory Dissinger
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -40,7 +41,6 @@ import main.java.game.Player;
 import main.java.game.SpriteManager;
 import main.java.game.Turn;
 import main.java.game.Yahtzee;
-
 public class HumanMenu extends JPanel implements ActionListener
 {
   private Yahtzee controller;
@@ -64,19 +64,19 @@ public class HumanMenu extends JPanel implements ActionListener
   private int cheatedScore;
 
   /**
-   * Constructor for the HumanMenu class. 
-   * 
-   * Initializes all components. Uses BoxLayout on the top level container. 
+   * Constructor for the HumanMenu class.
+   *
+   * Initializes all components. Uses BoxLayout on the top level container.
    * titlePanel, playPanel, and scoreTitlePanel use GridBagLayout's default
-   * properties to center themselves. comboPanel, which contains all 
-   * JRadioButtons that represent possible scores, uses GridLayout. 
-   * 
+   * properties to center themselves. comboPanel, which contains all
+   * JRadioButtons that represent possible scores, uses GridLayout.
+   *
    * @param jApp The JApplet controller.
    * @param turn Newly created turn to control gameplay.
-   * @param player Reference to active player object.   
+   * @param player Reference to active player object.
    * @param spriteManager SpriteManager containing image information.
-   * @param isSingle Flag for game status.     
-   */                                   
+   * @param isSingle Flag for game status.
+   */
   public HumanMenu(Yahtzee jApp, Turn turn, Player player, SpriteManager spriteManager, boolean isSingle)
   {
     setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -343,11 +343,11 @@ public class HumanMenu extends JPanel implements ActionListener
 
   /**
    * updateComboPanel refreshes the JRadioButtons holding possible scores.
-   * 
+   *
    * updateComboPanel receives a TreeMap containing scoring information from
    * the active player, and iterates through each entry setting up a button for
    * each one.
-   */                 
+   */
   public void updateScorePanel()
   {
     TreeMap<String, Integer> possiblePoints = thePlayer.getPossibleScores();
@@ -528,13 +528,13 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * makeRadioScore accepts various parameters to create a category scoring JRadioButton.
-   * 
+   *
    * @param cat The name of the button to be made.
    * @param pos X Position
    * @param col Y Position
    * @param score Points received.
    * @param index Index to be inserted in the comboGroup.
-   */                       
+   */
   public void makeRadioScore(String cat, int pos, int col, int score, int index)
   {
       JRadioButton temp = new JRadioButton(cat + ": " + score);
@@ -556,8 +556,13 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Creates a new JLabel object and displays it accordingly. It represents
-   * a previously selected score.   
-   */     
+   * a previously selected score.
+   *
+   * @param cat a {@link java.lang.String} object.
+   * @param pos a int.
+   * @param col a int.
+   * @param score a int.
+   */
   public void makeLabelScore(String cat, int pos, int col, int score)
   {
       JLabel temp = new JLabel(cat + "= " + score);
@@ -574,7 +579,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Sets the multiplayer flag to true.
-   */     
+   *
+   * @param value a boolean.
+   */
   public void setGameToSingle(boolean value)
   {
     isSingle = value;
@@ -582,7 +589,7 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * updateDice repaints the Dice images to match their values.
-   */     
+   */
   public void updateDice()
   {
     int [] newValues = theTurn.getDiceValues();
@@ -635,10 +642,10 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Whenever a player makes an action this sends details to the server.
-   * 
+   *
    * @param type The type of action taken.
    * @param message A brief list of details.
-   */              
+   */
   public void sendMessageToServer(String type, String message)
   {
     String temp;
@@ -669,7 +676,7 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * updateThrows changes the displayed information to match current throws left
-   */     
+   */
   public void updateThrows()
   {
     int throwsLeft = theTurn.getThrows();
@@ -694,9 +701,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * getSelectedScore checks each JRadioButton and returns the selected text.
-   * 
-   * @return String representing selected score.      
-   */     
+   *
+   * @return String representing selected score.
+   */
   public String getSelectedScore()
   {
     String selection = new String("");
@@ -741,9 +748,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Creates a string detailing the category and points received this turn.
-   * 
-   * @return A message with the category and points received this turn.     
-   */     
+   *
+   * @return A message with the category and points received this turn.
+   */
   public String getTurnInfo()
   {
     String temp = new String();
@@ -756,7 +763,7 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Activates the dice cheat, providing the JApplet a chance to listen for keys.
-   */     
+   */
   public void activateDiceCheat()
   {
     JOptionPane.showMessageDialog(controller, "Enter a series of five integers, 1 through 6" , "Dice Cheat", JOptionPane.QUESTION_MESSAGE);
@@ -782,7 +789,7 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Activates the score cheat, providing the JApplet a chance to listen for keys.
-   */     
+   */
   public void activateScoreCheat()
   {
     JOptionPane.showMessageDialog(controller, "Enter two integers for a new score (tens digit then ones digit), then click the radio button of the category to place it in. Click a button on the screen to see results.", "Score Cheat", JOptionPane.QUESTION_MESSAGE);
@@ -793,7 +800,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Executes the score cheat using user entered keys.
-   */     
+   *
+   * @param category a {@link java.lang.String} object.
+   */
   public void executeScoreCheat(String category)
   {
     thePlayer.cheated();
@@ -804,9 +813,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Checks to see if the user has selected a score, returns true if so.
-   * 
-   * @return True if a score is selected, false otherwise.      
-   */     
+   *
+   * @return True if a score is selected, false otherwise.
+   */
   public boolean scoreSelected()
   {
     for(int i = 0; i < comboSelectors.length; i++)
@@ -819,14 +828,15 @@ public class HumanMenu extends JPanel implements ActionListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed method from ActionListener interface.
-   * 
+   *
    * This overloaded actionPerformed method has three possible results. The
    * human user could click the Roll Dice button to invoke a die roll, the
    * Take Dice button which sets the currently selected score into that players
    * score card, or holds a die.
    */
-                       
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());
@@ -881,9 +891,9 @@ public class HumanMenu extends JPanel implements ActionListener
   
   /**
    * Determines what cheat was activated.
-   * 
-   * @param e The KeyEvent information.      
-   */     
+   *
+   * @param e The KeyEvent information.
+   */
   public void handleCheat(KeyEvent e)
   {
     int input = Character.getNumericValue(e.getKeyChar());

@@ -1,7 +1,10 @@
 package main.java.net;
 /**
  * Client class. Each user that opens this applet receives a Client class to themselves.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +16,6 @@ import java.util.Vector;
 
 import main.java.game.Player;
 import main.java.game.Yahtzee;
-
 public class YahtzeeClient
 {
   private Yahtzee controller;
@@ -23,9 +25,9 @@ public class YahtzeeClient
 
   /**
    * Constructor, accepts a Yahtzee controller.
-   * 
-   * @param jApp The Yahtzee controller.      
-   */     
+   *
+   * @param jApp The Yahtzee controller.
+   */
   public YahtzeeClient(Yahtzee jApp)
   {
     controller = jApp;
@@ -33,7 +35,7 @@ public class YahtzeeClient
 
   /**
    * Initializes the client's socket connection.
-   */     
+   */
   public void initSocket()
   {
      try{
@@ -49,9 +51,9 @@ public class YahtzeeClient
   
   /**
    * Asks the server if the multiplayer game can continue.
-   * 
-   * @return True if so, false otherwise.      
-   */     
+   *
+   * @return True if so, false otherwise.
+   */
   public boolean continueMultiGame()
   {
     System.out.println("Check if game can continue.");
@@ -72,9 +74,9 @@ public class YahtzeeClient
 
   /**
    * Asks the server for all scores for a target player.
-   * 
-   * @param targetPlayer The player who's scores are requested.      
-   */     
+   *
+   * @param targetPlayer The player who's scores are requested.
+   */
   public void updateClientScores(String targetPlayer)
   {
     out.println("getScores");
@@ -115,8 +117,8 @@ public class YahtzeeClient
   }
   
   /**
-   * Adds a player to the server.   
-   */     
+   * Adds a player to the server.
+   */
   public void addPlayerToServer()
   {
     out.println("addPlayer");
@@ -125,9 +127,9 @@ public class YahtzeeClient
   
   /**
    * Determines if the turn has changed.
-   * 
-   * @return True if the turn changed, false otherwise.         
-   */     
+   *
+   * @return True if the turn changed, false otherwise.
+   */
   public boolean isNextMultiTurn()
   {
     out.println("turnChange?");
@@ -149,9 +151,9 @@ public class YahtzeeClient
   
   /**
    * Gets the index of the active player that the server has stored.
-   * 
-   * @return The integer index location of the active player.      
-   */     
+   *
+   * @return The integer index location of the active player.
+   */
   public int getServerIndex()
   {
     out.println("serverIndex");
@@ -172,7 +174,7 @@ public class YahtzeeClient
   
   /**
    * Gets all players from the server.
-   */     
+   */
   public void getPlayersFromServer()
   {
     out.println("getPlayers");
@@ -201,7 +203,7 @@ public class YahtzeeClient
   
   /**
    * Sends a ready message to the server.
-   */     
+   */
   public void sendReadyMessage()
   {
     System.out.println("Send ready message to server.");
@@ -210,9 +212,9 @@ public class YahtzeeClient
   
   /**
    * Checks to see if the server is busy.
-   * 
-   * @return True if busy, false otherwise.      
-   */     
+   *
+   * @return True if busy, false otherwise.
+   */
   public boolean checkAvailable()
   {
     out.println("available");
@@ -232,9 +234,9 @@ public class YahtzeeClient
   
   /**
    * Gets a recent message from the server.
-   * 
-   * @return The recently set message.      
-   */     
+   *
+   * @return The recently set message.
+   */
   public String getRecentMessage()
   {
     out.println("getRecent");
@@ -254,9 +256,9 @@ public class YahtzeeClient
   
   /**
    * Sends a new recent message to the server.
-   * 
-   * @param message The message to be stored.      
-   */     
+   *
+   * @param message The message to be stored.
+   */
   public void setRecentMessage(String message)
   {
     out.println("setRecent");
@@ -266,9 +268,9 @@ public class YahtzeeClient
   
   /**
    * Checks to see if other players are ready.
-   * 
-   * @return True if all players are ready, false otherwise.      
-   */     
+   *
+   * @return True if all players are ready, false otherwise.
+   */
   public boolean readyCheck()
   {
     System.out.println("Check server ready status.");
@@ -290,9 +292,9 @@ public class YahtzeeClient
   
   /**
    * Sends a string of chatted text to the server.
-   * 
-   * @param text The new chat message.      
-   */     
+   *
+   * @param text The new chat message.
+   */
   public void chatOverSocket(String text)
   {
     out.println("chatSend");
@@ -303,9 +305,9 @@ public class YahtzeeClient
   
   /**
    * Gets the entire chat log from the server.
-   * 
-   * @return String containing the entire chat log.      
-   */     
+   *
+   * @return String containing the entire chat log.
+   */
   public String getChatLog()
   {
     out.println("chatGet");
@@ -332,9 +334,9 @@ public class YahtzeeClient
   
   /**
    * Determines if it is the client's turn.
-   * 
-   * @return True if so, false otherwise.      
-   */     
+   *
+   * @return True if so, false otherwise.
+   */
   public boolean clientsTurn()
   {
     System.out.println(controller.thisPlayer + " is checking to see if it's their turn.");
@@ -359,9 +361,9 @@ public class YahtzeeClient
   
   /**
    * Gets the name of the active player from the server.
-   * 
-   * @return String containing the name of the active player.      
-   */     
+   *
+   * @return String containing the name of the active player.
+   */
   public String getActiveFromServer()
   {
     System.out.println("Get active player from server.");
@@ -381,10 +383,10 @@ public class YahtzeeClient
   
   /**
    * Updates the server scoring information with a new score.
-   * 
+   *
    * @param cat Name of the category.
-   * @param score Points earned.         
-   */     
+   * @param score Points earned.
+   */
   public void updateServerScoreInfo(String cat, int score)
   {
     out.println("updateScores");
@@ -394,7 +396,7 @@ public class YahtzeeClient
   
   /**
    * Changes the turn on the server.
-   */     
+   */
   public void updateTurn()
   {
     out.println("endTurn");
@@ -402,9 +404,9 @@ public class YahtzeeClient
   
   /**
    * Fetches the entire game log from the server.
-   * 
-   * @param log The log to store the game log in.      
-   */     
+   *
+   * @param log The log to store the game log in.
+   */
   public void getGameLog(Vector<String> log)
   {
     out.println("getGameLog");
@@ -427,7 +429,7 @@ public class YahtzeeClient
   
   /**
    * Closes the socket from future communication.
-   */     
+   */
   public void closeSocket()
   {
     try{

@@ -1,7 +1,10 @@
 package main.java.ui;
 /**
  * MeterPanel displays the number of turns the player has left, Megaman life style.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -14,7 +17,6 @@ import javax.swing.JPanel;
 
 import main.java.game.SpriteManager;
 import main.java.game.Yahtzee;
-
 public class MeterPanel extends JPanel
 {
   private Yahtzee controller;
@@ -28,7 +30,7 @@ public class MeterPanel extends JPanel
    *
    * @param jApp The controller.
    * @param sm The SpriteManager.
-   */              
+   */
   public MeterPanel(Yahtzee jApp, SpriteManager sm)
   {
     controller = jApp;
@@ -48,7 +50,7 @@ public class MeterPanel extends JPanel
   
   /**
    * Decrements internal turn count by one.
-   */     
+   */
   public void subtractTurn()
   {
     turnsLeft--;  
@@ -56,7 +58,7 @@ public class MeterPanel extends JPanel
   
   /**
    * Repaints the meter to reflect current turns left.
-   */     
+   */
   public void updateMeter()
   {
     repaint();
@@ -64,8 +66,10 @@ public class MeterPanel extends JPanel
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Paints a number of pellets equal to the turns left.
-   */     
+   */
   public void paint(Graphics g)
   {
     g.drawImage(meter.getImage(), 0, 0, this);

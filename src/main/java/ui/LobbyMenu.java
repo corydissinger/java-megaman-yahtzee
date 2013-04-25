@@ -2,7 +2,10 @@ package main.java.ui;
 /**
  * LobbyMenu provides the players an opportunity to chat and declare readiness.
  * Uses an inner updater Thread class to periodically receive chat information.
- */  
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -28,7 +31,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class LobbyMenu extends JPanel implements ActionListener, KeyListener
 {
   private Yahtzee controller;
@@ -41,12 +43,12 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
   private JScrollPane scrollPane;
   private Border raisedBevel, blueLine, compound, etched, loweredBevel;   
    
-   /**
-    * Constructor for LobbyMenu. Takes in a controller and Vector of players.
-    * 
-    * @param jApp Yahtzee controler.
-    * @param players Vector of currently signed up players.
-    */                   
+  /**
+   * Constructor for LobbyMenu. Takes in a controller and Vector of players.
+   *
+   * @param jApp Yahtzee controler.
+   * @param players Vector of currently signed up players.
+   */
   public LobbyMenu(Yahtzee jApp, Vector<String> players)
   {
     super(new GridBagLayout());
@@ -221,6 +223,11 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
     }
   }
    
+  /**
+   * <p>readyCheck.</p>
+   *
+   * @return a boolean.
+   */
   public boolean readyCheck()
   {
     return true;
@@ -228,9 +235,9 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * updatePlayerNames checks the server for any additional players.
-   * 
+   *
    * @param players The players received from the server.
-   */           
+   */
   public void updatePlayerNames(Vector<String> players)
   {
     int count = 1;
@@ -250,9 +257,9 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * Updates the chat area with a new String of text.
-   * 
-   * @param chatText String containing the chat log.      
-   */     
+   *
+   * @param chatText String containing the chat log.
+   */
   public void updateChatArea(String chatText)
   {
     chatArea.setText("");
@@ -261,9 +268,9 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
     validate();  
   }
  
- /**
-  * Called by updater. Refreshes all components with server information.
-  */    
+  /**
+   * Called by updater. Refreshes all components with server information.
+   */
   public void refreshAll()
   {
     controller.client.getPlayersFromServer();
@@ -277,10 +284,10 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed, works with ready button.
-   * 
-   * @param e The ActionEvent triggered.      
-   */     
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());
@@ -290,10 +297,10 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded keyPressed, waits for enter then sends entered text to server.
-   * 
-   * @param e The keyEvent captured.
-   */           
+   */
   public void keyPressed(KeyEvent e)
   {
     if(e.getKeyCode() == e.VK_ENTER)
@@ -305,9 +312,11 @@ public class LobbyMenu extends JPanel implements ActionListener, KeyListener
     }
   }
     
+  /** {@inheritDoc} */
   public void keyReleased(KeyEvent e)
   {}
   
+  /** {@inheritDoc} */
   public void keyTyped(KeyEvent e)
   {} 
 }

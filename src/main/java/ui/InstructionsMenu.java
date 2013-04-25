@@ -1,9 +1,10 @@
 package main.java.ui;
 /**
  * InstructionsMenu class implementation. Displays basic instructions.
- * 
+ *
  * @author Cory Dissinger
- */   
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -24,7 +25,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class InstructionsMenu extends JPanel implements ActionListener
 {
   private Yahtzee controller;
@@ -35,9 +35,9 @@ public class InstructionsMenu extends JPanel implements ActionListener
   
   /**
    * Constructor. Initializes and configures all components.
-   *      
-   * @param jApp The JApplet controller.        
-   */   
+   *
+   * @param jApp The JApplet controller.
+   */
   public InstructionsMenu(Yahtzee jApp)
   {
     controller = jApp;
@@ -90,12 +90,12 @@ public class InstructionsMenu extends JPanel implements ActionListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded actionPerformed method from ActionListener interface.
-   * 
+   *
    * This performs one operation which is returning to the previous menu.
-   * 
-   * @param e The received ActionEvent
-   */                 
+   */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

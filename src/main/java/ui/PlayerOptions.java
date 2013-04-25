@@ -11,12 +11,23 @@ import javax.swing.KeyStroke;
 
 import main.java.game.Yahtzee;
 
+/**
+ * <p>PlayerOptions class.</p>
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 public class PlayerOptions extends JMenuBar implements ActionListener
 {
   private Yahtzee controller;
   private JMenu menu;
   private JMenuItem scoreCards, instructions, gameLog;
   
+  /**
+   * <p>Constructor for PlayerOptions.</p>
+   *
+   * @param jApp a {@link main.java.game.Yahtzee} object.
+   */
   public PlayerOptions(Yahtzee jApp)
   {
     controller = jApp;
@@ -51,6 +62,7 @@ public class PlayerOptions extends JMenuBar implements ActionListener
     validate();              
   }
   
+  /** {@inheritDoc} */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

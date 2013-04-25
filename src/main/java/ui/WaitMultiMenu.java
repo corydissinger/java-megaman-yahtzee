@@ -1,7 +1,10 @@
 package main.java.ui;
 /**
  * WaitMultiMenu has a chat and a recent messages area for players in an online game.
- */ 
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -26,7 +29,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
 {
   private Yahtzee controller;
@@ -41,11 +43,11 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   private JLabel chatLabel;
   private Border raisedBevel, blueLine, compound, etched, loweredBevel;   
  
- /**
-  * Constructor, accepts a Yahtzee controller as a parameter.
-  * 
-  * @param jApp The Yahtzee controller.    
-  */     
+  /**
+   * Constructor, accepts a Yahtzee controller as a parameter.
+   *
+   * @param jApp The Yahtzee controller.
+   */
   public WaitMultiMenu(Yahtzee jApp)
   {
     super(new GridBagLayout());
@@ -199,9 +201,9 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
     }
   }
  
- /**
-  * Starts the inner Updater class which periodically gets server information.
-  */   
+  /**
+   * Starts the inner Updater class which periodically gets server information.
+   */
   public void startUpdater()
   {
     refresher = new Updater(this);
@@ -209,9 +211,9 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
     t.start();
   }
  
- /**
-  * Stops the updater to prevent I/O interference.
-  */   
+  /**
+   * Stops the updater to prevent I/O interference.
+   */
   public void stopUpdater()
   {
     refresher.stopUpdater();
@@ -225,9 +227,9 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * Gets the game status from the server.
-   * 
-   * @return Returns true if its time for a new turn, false otherwise.      
-   */     
+   *
+   * @return Returns true if its time for a new turn, false otherwise.
+   */
   public boolean getRefreshStatus()
   {
     return controller.client.isNextMultiTurn();
@@ -235,9 +237,9 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * Sets the chat area's text to a new String.
-   * 
-   * @param chatText String containing chat log information.      
-   */     
+   *
+   * @param chatText String containing chat log information.
+   */
   public void updateChatArea(String chatText)
   {
     chatArea.setText("");
@@ -248,7 +250,7 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * Used with inner Updater class. Refreshes all components.
-   */     
+   */
   public void refreshAll()
   {
     updateRecentMessage(controller.client.getRecentMessage());
@@ -259,9 +261,9 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   
   /**
    * Updates the recent messages area.
-   * 
-   * @param message A recent message from the server.      
-   */     
+   *
+   * @param message A recent message from the server.
+   */
   public void updateRecentMessage(String message)
   {
     messageArea.setText("");
@@ -271,6 +273,7 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
     validate();  
   }
      
+  /** {@inheritDoc} */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());
@@ -290,10 +293,10 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
   }
   
   /**
+   * {@inheritDoc}
+   *
    * Overloaded keyPressed method. Waits for the user to press enter.
-   * 
-   * @param e The triggered KeyEvent.      
-   */     
+   */
   public void keyPressed(KeyEvent e)
   {
     if(e.getKeyCode() == e.VK_ENTER)
@@ -305,9 +308,11 @@ public class WaitMultiMenu extends JPanel implements ActionListener, KeyListener
     }
   }
     
+  /** {@inheritDoc} */
   public void keyReleased(KeyEvent e)
   {}
   
+  /** {@inheritDoc} */
   public void keyTyped(KeyEvent e)
   {} 
 }

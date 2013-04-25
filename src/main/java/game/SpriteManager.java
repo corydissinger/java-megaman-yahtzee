@@ -1,7 +1,10 @@
 package main.java.game;
 /**
- * Solely responsible for loading, drawing, and mainting images for the program. 
- */ 
+ * Solely responsible for loading, drawing, and mainting images for the program.
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 import java.awt.Image;
 import java.net.URL;
@@ -9,7 +12,6 @@ import java.util.TreeMap;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-
 public class SpriteManager
 {
   private static final String IMG_DIR = "/images/"; 
@@ -39,9 +41,9 @@ public class SpriteManager
   
   /**
    * Constructor. Accepts a Yahtzee controller as an argument.
-   * 
-   * @param jApp The Yahtzee controller.      
-   */     
+   *
+   * @param jApp The Yahtzee controller.
+   */
   public SpriteManager(Yahtzee jApp)
   {
     controller = jApp;
@@ -52,7 +54,7 @@ public class SpriteManager
   
   /**
    * Loads the winning and losing images.
-   */     
+   */
   public void loadFinishImages()
   {
     URL url = controller.getClass().getResource(IMG_DIR + "win.png");
@@ -64,7 +66,7 @@ public class SpriteManager
   
   /**
    * Loads each image involved in the score animation.
-   */     
+   */
   public void loadScoreImages()
   {
     scoreImages = new Vector<Image>();
@@ -86,11 +88,11 @@ public class SpriteManager
     }
   }
  
- /**
-  * Returns the meter image.
-  * 
-  * @return The meter Image.    
-  */    
+  /**
+   * Returns the meter image.
+   *
+   * @return The meter Image.
+   */
   public ImageIcon getMeter()
   {
     return meter;
@@ -98,9 +100,9 @@ public class SpriteManager
   
   /**
    * Returns the pellet image.
-   * 
-   * @return The pellet Image.      
-   */     
+   *
+   * @return The pellet Image.
+   */
   public ImageIcon getPellet()
   {
     return pellet;
@@ -108,7 +110,7 @@ public class SpriteManager
   
   /**
    * Loads the meter and pellet image.
-   */     
+   */
   public void loadMeterImages()
   {
     URL url = controller.getClass().getResource(IMG_DIR + "meter.png");
@@ -122,7 +124,7 @@ public class SpriteManager
   
   /**
    * Loads the 1UP symbol for tracking rolls left.
-   */     
+   */
   public void loadLife()
   {
     URL url = controller.getClass().getResource(IMG_DIR + "megaman1up.png");
@@ -132,7 +134,9 @@ public class SpriteManager
   
   /**
    * Returns the megaManLife 1UP ImageIcon.
-   */     
+   *
+   * @return a {@link javax.swing.ImageIcon} object.
+   */
   public ImageIcon getLife()
   {
     return megaManLife;
@@ -140,7 +144,7 @@ public class SpriteManager
   
   /**
    * Loads both sets of custom made dice.
-   */     
+   */
   public void loadDiceImages()
   {
     upDiceImages = new Vector<ImageIcon>(6);
@@ -164,7 +168,7 @@ public class SpriteManager
   
   /**
    * Loads each image that controls the ready animation.
-   */     
+   */
   public void loadReadyImages()
   {
     readyImages = new Vector<Image>();
@@ -187,11 +191,11 @@ public class SpriteManager
     }
   }
  
- /**
-  * Checks to see if the current animation can continue.
-  * 
-  * @return True if the animation can continue, false otherwise.    
-  */   
+  /**
+   * Checks to see if the current animation can continue.
+   *
+   * @return True if the animation can continue, false otherwise.
+   */
   public boolean canAnimateMore()
   {
     if(currentAnimation.equals("ready"))
@@ -214,11 +218,10 @@ public class SpriteManager
   
   /**
    * Modifies the blast animation based on what score was received.
-   * 
+   *
    * @param message Name of the category to be displayed.
-   * 
-   * @param number The number of points received.            
-   */     
+   * @param number The number of points received.
+   */
   public void setBlastInfo(String message, int number)
   {
     cat = new String(message);
@@ -239,9 +242,9 @@ public class SpriteManager
   
   /**
    * Prepares an animation for display.
-   * 
-   * @param name The name of the animation to be prepared.      
-   */     
+   *
+   * @param name The name of the animation to be prepared.
+   */
   public void setAnimation(String name)
   {
     readyCounter = 0;
@@ -271,9 +274,9 @@ public class SpriteManager
  
   /**
    * Returns the x coordinate of the blast.
-   * 
-   * @return The blast's x coordinate.      
-   */      
+   *
+   * @return The blast's x coordinate.
+   */
   public int getBlastX()
   {
     return blastX;
@@ -281,9 +284,9 @@ public class SpriteManager
   
   /**
    * Returns the y coordinate of the blast.
-   * 
-   * @return The blast's y coordinate.      
-   */     
+   *
+   * @return The blast's y coordinate.
+   */
   public int getBlastY()
   {
     return blastY;
@@ -291,9 +294,9 @@ public class SpriteManager
   
   /**
    * Returns the current image, used with animations.
-   * 
-   * @return The current frame in animation.      
-   */     
+   *
+   * @return The current frame in animation.
+   */
   public Image getCurrentImage()
   {
     return currentImage;
@@ -301,9 +304,9 @@ public class SpriteManager
   
   /**
    * If a specific wait time is used, this returns it.
-   * 
-   * @return The wait time, in milliseconds.      
-   */     
+   *
+   * @return The wait time, in milliseconds.
+   */
   public int getWaitTime()
   {
     return waitTime;
@@ -311,17 +314,17 @@ public class SpriteManager
   
   /**
    * Returns a string describing what type of animation is currently set.
-   * 
-   * @return String describing the current type.      
-   */     
+   *
+   * @return String describing the current type.
+   */
   public String getType()
   {
     return currentAnimation;
   }
  
- /**
-  * Updates the current image, if possible.
-  */    
+  /**
+   * Updates the current image, if possible.
+   */
   public void updateImage()
   {  
     if(currentAnimation.equals("ready"))
@@ -332,7 +335,7 @@ public class SpriteManager
   
   /**
    * Custom-tailored to update the readyImages Vector.
-   */     
+   */
   public void updateReadyImage()
   {    
     if(currentIndex == 0)
@@ -361,7 +364,7 @@ public class SpriteManager
   
   /**
    * Custom tailored to update the scoreImages Vector.
-   */     
+   */
   public void updateScoreImage()
   {
     if(currentIndex != scoreImages.size() - 1) 
@@ -384,9 +387,9 @@ public class SpriteManager
   
   /**
    * Returns the blast's status flag.
-   * 
-   * @return True if the blast can be seen, false otherwise.      
-   */        
+   *
+   * @return True if the blast can be seen, false otherwise.
+   */
   public boolean showBlast()
   {
     if(showBlast)
@@ -397,9 +400,9 @@ public class SpriteManager
   
   /**
    * Returns the blast's current image.
-   * 
+   *
    * @return Image object of the blast.
-   */           
+   */
   public Image getBlast()
   {
     return theBlast;
@@ -407,9 +410,9 @@ public class SpriteManager
   
   /**
    * Returns the stored category name for the score animation.
-   * 
-   * @return Category name.      
-   */     
+   *
+   * @return Category name.
+   */
   public String getCategory()
   {
     return cat;
@@ -417,9 +420,9 @@ public class SpriteManager
   
   /**
    * Returns the stored score for the category in the score animation.
-   * 
-   * @return The points valley of the category.      
-   */     
+   *
+   * @return The points valley of the category.
+   */
   public int getScore()
   {
     return score;
@@ -427,9 +430,9 @@ public class SpriteManager
   
   /**
    * Returns the Vector of ImageIcons related to the unheld Dice.
-   * 
-   * @return The upDice Vector of ImageIcons      
-   */     
+   *
+   * @return The upDice Vector of ImageIcons
+   */
   public Vector<ImageIcon> getUpDiceImages()
   {
     return upDiceImages;
@@ -437,9 +440,9 @@ public class SpriteManager
   
   /**
    * Returns the Vector of ImageIcons related to the held dice.
-   * 
-   * @return The downDice Vector of ImageIcons.      
-   */     
+   *
+   * @return The downDice Vector of ImageIcons.
+   */
   public Vector<ImageIcon> getDownDiceImages()
   {
     return downDiceImages;

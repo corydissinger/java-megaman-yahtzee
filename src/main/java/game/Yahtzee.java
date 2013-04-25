@@ -3,7 +3,10 @@ package main.java.game;
  * Yahtzee extends JApplet and is the master of all components related to this
  * project. In its private data members it holds one of each of the menus, and
  * the Vector of all players currently playing.
- */   
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.GridBagConstraints;
@@ -32,7 +35,6 @@ import main.java.ui.StartMenu;
 import main.java.ui.WaitMenu;
 import main.java.ui.WaitMultiMenu;
 import main.java.ui.WinnersMenu;
-
 public class Yahtzee extends JApplet implements KeyListener
 {
   private GridBagConstraints gbConst = new GridBagConstraints();
@@ -63,11 +65,11 @@ public class Yahtzee extends JApplet implements KeyListener
 
   /**
    * init is called when the JApplet is loaded into the browser.
-   * 
+   *
    * init Instantiates each menu, loads all of the dice images,
    * and displays the StartMenu to the user to setup the game.
-   * It also forces the SpriteManager to load all images.   
-   */              
+   * It also forces the SpriteManager to load all images.
+   */
   public void init()
   { 
     setLayout(new GridBagLayout());
@@ -98,12 +100,12 @@ public class Yahtzee extends JApplet implements KeyListener
   }
   
   /**
-   * runGame is the main method that drives gameplay. 
-   * 
+   * runGame is the main method that drives gameplay.
+   *
    * runGame is called each time a menu's lifespan is up. It determines
-   * which player goes next, then displays the appropriate menu. 
+   * which player goes next, then displays the appropriate menu.
    * finishGame is called when no more players can take turns.
-   */                 
+   */
   public void runSingleGame()
   {    
     if(continueSingleGame())
@@ -119,7 +121,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Runs the game if it is a multiplayer game.
-   */     
+   */
   public void runMultiGame()
   {
     activePlayer = new String(client.getActiveFromServer());
@@ -145,10 +147,10 @@ public class Yahtzee extends JApplet implements KeyListener
 
   /**
    * updateIndex determines which position the currentPlayerIndex should be.
-   * 
+   *
    * currentPlayerIndex is incremented by one unless it would go out of bounds.
    * In which case, it is set to zero.
-   */              
+   */
   public void updateSingleIndex()
   {
     if(currentPlayerIndex == (allPlayers.size() - 1))
@@ -159,7 +161,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Stops all updaters to prevent I/O interference.
-   */     
+   */
   public void stopUpdaters()
   {
     if(currentPanel.equals("multiWait"))
@@ -168,7 +170,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Resumes all updaters.
-   */     
+   */
   public void startUpdaters()
   {
     if(currentPanel.equals("multiWait"))
@@ -177,9 +179,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * continueGame determines if another player can make a move or not.
-   * 
-   * @return Returns true if a player has a move left, false otherwise.      
-   */    
+   *
+   * @return Returns true if a player has a move left, false otherwise.
+   */
   public boolean continueSingleGame()
   {
     for(int i = 0; i < allPlayers.size(); i++)
@@ -193,7 +195,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Method used in the animation menu to return the user to gameplay.
-   */     
+   */
   public void returnFromAnimation()
   {
     setLayout(new GridBagLayout());
@@ -225,9 +227,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * newHumanTurn sets up the HumanMenu for the active Human player.
-   * 
+   *
    * @param player The active player.
-   */           
+   */
   public void newHumanTurn(Player player)
   {    
     theTurn = new Turn();
@@ -250,8 +252,8 @@ public class Yahtzee extends JApplet implements KeyListener
   }
   
   /**
-   * If the single game option was selected, starts a single player game.   
-   */     
+   * If the single game option was selected, starts a single player game.
+   */
   public void startSingleGame()
   {
     getContentPane().removeAll();
@@ -269,7 +271,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * If the multiplayer game optio nwas selected, starts a multiplayer game.
-   */     
+   */
   public void startMultiGame()
   {
     client = new YahtzeeClient(this);
@@ -293,9 +295,9 @@ public class Yahtzee extends JApplet implements KeyListener
   }
   /**
    * newArtificialTurn sets up the ArtificialMenu for the active Artificial player.
-   * 
+   *
    * @param player The active player.
-   */          
+   */
   public void newArtificialTurn(Player player)
   {
     theTurn = new Turn();
@@ -319,9 +321,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Creates a new waiting menu for a multiplayer game.
-   * 
-   * @param player The player to be used.            
-   */     
+   *
+   * @param player The player to be used.
+   */
   public void newWaitTurn(Player player)
   {
     currentPanel = new String("multiWait");
@@ -335,7 +337,10 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Updates the game log in a single game.
-   */     
+   *
+   * @param turnInfo a {@link java.lang.String} object.
+   * @param pName a {@link java.lang.String} object.
+   */
   public void updateSingleLog(String turnInfo, String pName)
   {
     gameLog.addTurnInfo(turnInfo, pName);
@@ -343,12 +348,12 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * optionsSelected is called when a player interacts with the JMenuBar.
-   * 
+   *
    * optionsSelected stores the current menu in previous, then displays
-   * the menu the user asked for.   
-   *      
-   * @param option The menu the player has selected. 
-   */          
+   * the menu the user asked for.
+   *
+   * @param option The menu the player has selected.
+   */
   public void optionsSelected(String option)
   {
     previous = determineCurrentPanel();
@@ -382,9 +387,9 @@ public class Yahtzee extends JApplet implements KeyListener
 
   /**
    * determineCurrentPanel returns the currently active panel.
-   * 
+   *
    * @return The JPanel to be stored in previous.
-   */                   
+   */
   public JPanel determineCurrentPanel()
   {
     if(currentPanel.equals("start"))
@@ -403,10 +408,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * initializePlayers is called when the user has finished setup in the StartMenu.
-   * 
-   * @param numPlayers The number of players in this game.
-   * @param thePlayers String to Character mapping of names to player types.
-   */              
+   *
+   * @param name a {@link java.lang.String} object.
+   */
   public void addPlayer(String name)
   {  
     if(thisPlayer == null)
@@ -418,7 +422,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Called whenever a player backs out of a JMenuBar spawned menu.
-   */     
+   */
   public void toGame()
   {
     getContentPane().removeAll();
@@ -431,7 +435,7 @@ public class Yahtzee extends JApplet implements KeyListener
 
   /**
    * endTurn is called when a player takes in dice for their turn. Continues gameplay.
-   */     
+   */
   public void tryNewTurn()
   {    
     meterPanel.updateMeter();  
@@ -458,11 +462,11 @@ public class Yahtzee extends JApplet implements KeyListener
 
   /**
    * Returns each player's score mapping.
-   * 
+   *
    * Maps a players name to a map of that player's scored categories.
-   * 
+   *
    * @return The TreeMap containing all players and their scoring info.
-   */                 
+   */
   public TreeMap<String, TreeMap<String, Integer>> getScoreInfo()
   {
     TreeMap<String, TreeMap<String, Integer>> temp = new TreeMap<String, TreeMap<String, Integer>>();
@@ -480,9 +484,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Returns a Vector containing all player names.
-   * 
-   * @return A Vector containing the names of all current players. 
-   */          
+   *
+   * @return A Vector containing the names of all current players.
+   */
   public Vector<String> getPlayerNames()
   {
     Vector<String> temp = new Vector<String>();
@@ -495,9 +499,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * getPlayerStandings returns a mapping of player names to grand total scores.
-   * 
+   *
    * @return The mapping of players to scores.
-   */           
+   */
   public TreeMap<String, Integer> getPlayerStandings()
   {
     TreeMap<String, Integer> temp = new TreeMap<String, Integer>();
@@ -510,7 +514,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Wraps up a multiplayer game with an appropriate animation.
-   */     
+   */
   public void finishMultiGame()
   {
     currentPanel = new String("winners");
@@ -536,7 +540,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * finishSingleGame is called last and displays the WinnersMenu.
-   */     
+   */
   public void finishSingleGame()
   {
     currentPanel = new String("winners");
@@ -554,9 +558,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Determines if this client won.
-   * 
-   * @return True if this player won, false otherwise.      
-   */     
+   *
+   * @return True if this player won, false otherwise.
+   */
   public boolean thisPlayerWon()
   {
     int highScore = 0;
@@ -579,7 +583,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Brings up the winners menu with final standings.
-   */     
+   */
   public void showWinners()
   {
     winnersMenu = new WinnersMenu(getPlayerStandings(), this);
@@ -591,7 +595,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Forces the browser to reload.
-   */     
+   */
   public void resetGame()
   {
     try{
@@ -603,10 +607,10 @@ public class Yahtzee extends JApplet implements KeyListener
   }
   /**
    * Displays a popup error message.
-   * 
+   *
    * @param message The error message to be displayed.
-   * @param title Title of error.         
-   */     
+   * @param title Title of error.
+   */
   public void displayError(String message, String title)
   {
     JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
@@ -614,7 +618,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Removes all key listeners after a cheat has been used.
-   */     
+   */
   public void removeKeyListeners()
   {
     KeyListener [] listener = getKeyListeners();
@@ -623,7 +627,7 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Adds a key listener temporarily for use with cheats.
-   */     
+   */
   public void getKeys()
   {
     addKeyListener(this);
@@ -632,9 +636,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Updates the current player to avoid loss of information.
-   * 
-   * @param play The player to be updated.      
-   */     
+   *
+   * @param play The player to be updated.
+   */
   public void updatePlayer(Player play)
   { 
     spriteManager.setBlastInfo(play.getRecentCat(), play.getRecentScore()); 
@@ -642,9 +646,9 @@ public class Yahtzee extends JApplet implements KeyListener
   
   /**
    * Accepts a string, and prepares the AnimationMenu for that animation.
-   * 
-   * @param name The name of the animation to be displayed.      
-   */     
+   *
+   * @param name The name of the animation to be displayed.
+   */
   public void showAnimation(String name)
   {  
     fromAnimation = new String(name);
@@ -675,12 +679,15 @@ public class Yahtzee extends JApplet implements KeyListener
     animationMenu.startAnimation();
   }
   
+  /** {@inheritDoc} */
   public void keyPressed(KeyEvent e)
   {return;}
   
+  /** {@inheritDoc} */
   public void keyTyped(KeyEvent e)
   {humanMenu.handleCheat(e);}
   
+  /** {@inheritDoc} */
   public void keyReleased(KeyEvent e)
   {return;}
 }   

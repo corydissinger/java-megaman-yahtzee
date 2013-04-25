@@ -2,11 +2,13 @@ package main.java.game;
 /**
  * YahtzeeScoreCard class implementation. Holds many methods for the storing
  * and manipulation of Yahtzee scores.
- */  
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
-
 public class YahtzeeScoreCard
 {
   private TreeMap<String,Integer> comboPoints;
@@ -17,7 +19,7 @@ public class YahtzeeScoreCard
   
   /**
    * Constructor. Creates an entry for each scoreable category.
-   */     
+   */
   public YahtzeeScoreCard()
   {
     workingValues = new int[5];
@@ -71,6 +73,11 @@ public class YahtzeeScoreCard
     usedPoints.remove("Upper Bonus");  
   }
   
+  /**
+   * <p>hasCategoriesLeft.</p>
+   *
+   * @return a boolean.
+   */
   public boolean hasCategoriesLeft()
   {
     for(Map.Entry<String, Boolean> entry : usedPoints.entrySet())
@@ -84,10 +91,10 @@ public class YahtzeeScoreCard
   
   /**
    * attemptSet tries to set score into a category.
-   * 
+   *
    * @param catName The name of the category to be set.
    * @return Returns true if sucessful, false otherwise.
-   */              
+   */
   public boolean attemptSet(String catName)
   {
     if(categoryAlreadySet(catName))
@@ -99,6 +106,12 @@ public class YahtzeeScoreCard
       return false;
   }
   
+  /**
+   * <p>cheatSet.</p>
+   *
+   * @param catName a {@link java.lang.String} object.
+   * @param catScore a int.
+   */
   public void cheatSet(String catName, int catScore)
   {
     if(!usedPoints.containsKey(catName))
@@ -116,10 +129,10 @@ public class YahtzeeScoreCard
   
   /**
    * Used with attemptSet. Determines if a player has already set a category.
-   * 
+   *
    * @param catName The name of the category to be checked.
    * @return Returns true if the category is already set, false otherwise.
-   */              
+   */
   public boolean categoryAlreadySet(String catName)
   {
     if(usedPoints.containsKey(catName))
@@ -133,9 +146,9 @@ public class YahtzeeScoreCard
   
   /**
    * getPossiblePoints returns a mapping of possible categories to scores.
-   * 
+   *
    * @return The mapping of possible scoreable categories to scores.
-   */           
+   */
   public TreeMap<String, Integer> getPossiblePoints()
   {
     TreeMap<String, Integer> onlyPossible = new TreeMap<String, Integer>();
@@ -155,7 +168,7 @@ public class YahtzeeScoreCard
   
   /**
    * Grabs the scores the player has set previously.
-   * 
+   *
    * @return The String to Integer pairs representing a category and that score.
    */
   public TreeMap<String, Integer> getSetPoints()
@@ -194,10 +207,10 @@ public class YahtzeeScoreCard
   
   /**
    * Returns the int score of a specific category.
-   * 
+   *
    * @param category The category's score to be returned.
    * @return The integer score of the category.
-   */              
+   */
   public int getCategoryScore(String category)
   {
     return comboPoints.get(category);
@@ -205,9 +218,9 @@ public class YahtzeeScoreCard
   
   /**
    * Used with Artificial. Determines if any of the lower categories are possible.
-   * 
+   *
    * @return True if a lower section is scoreable, false otherwise.
-   */           
+   */
   public boolean lowSectionPossible()
   {
     if(possiblePoints.get("Small Straight") != 0 && !usedPoints.get("Small Straight"))
@@ -228,9 +241,9 @@ public class YahtzeeScoreCard
   
   /**
    * getHighestScorableCategory returns the name of the highest points category.
-   * 
+   *
    * @return The name of the highest scoring category.
-   */           
+   */
   public String getHighestScorableCategory()
   {
     int highestScore = 0;
@@ -255,6 +268,11 @@ public class YahtzeeScoreCard
   //Description: Gets the Grand Total score category.
   //Parameters: None.
   //Return: int - The player's Grand Total score.
+  /**
+   * <p>getGrandTotal.</p>
+   *
+   * @return a int.
+   */
   public int getGrandTotal()
   {
     return comboPoints.get("GRAND TOTAL");
@@ -266,6 +284,11 @@ public class YahtzeeScoreCard
   //Parameters: None.
   //Return: true - If the player deserves a bonus turn.
   //        false - Otherwise.
+  /**
+   * <p>Getter for the field <code>bonusTurn</code>.</p>
+   *
+   * @return a boolean.
+   */
   public boolean getBonusTurn()
   {
     if(bonusTurn)
@@ -282,6 +305,11 @@ public class YahtzeeScoreCard
   //             as the array. workingValues represents the dice face values.
   //Parameters: int [] theValues - The new values to be set.
   //Return: None.
+  /**
+   * <p>Setter for the field <code>workingValues</code>.</p>
+   *
+   * @param theValues an array of int.
+   */
   public void setWorkingValues(int [] theValues)
   {
     for(int i = 0; i < 5; i++)
@@ -794,6 +822,11 @@ public class YahtzeeScoreCard
   //Description: Returns a string showing the names of scorable categories.
   //Parameters: None.
   //Return: String temp - The string with names of scorable categories.
+  /**
+   * <p>scorableCategories.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   public String scorableCategories()
   {
     String temp = new String();
@@ -817,6 +850,11 @@ public class YahtzeeScoreCard
   //             receive a score for.
   //Parameters: None.
   //Return: String temp - The string containing all possible scores.
+  /**
+   * <p>getPossibleScores.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   public String getPossibleScores()
   { 
     String temp = new String();
@@ -851,6 +889,11 @@ public class YahtzeeScoreCard
   //             scores, and returns it.
   //Parameters: None.
   //Return: String temp - The string containing all scoring information.
+  /**
+   * <p>getActualScores.</p>
+   *
+   * @return a {@link java.util.TreeMap} object.
+   */
   public TreeMap<String, Integer> getActualScores()
   {
     return comboPoints;

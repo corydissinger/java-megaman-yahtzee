@@ -1,8 +1,11 @@
 package main.java.net;
 /**
  * Server program for the Yahtzee project 3. Contains various methods for communicating
- * with clients.  
- */ 
+ * with clients.
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +18,6 @@ import java.util.TreeMap;
 import java.util.Vector;
 
 import main.java.game.Player;
-
 public class YahtzeeServer
 {
   private Thread server;
@@ -34,7 +36,7 @@ public class YahtzeeServer
   
   /**
    * YahtzeeServer constructor. Starts the server thread.
-   */     
+   */
   public YahtzeeServer()
   {
     server = new Thread(new Server());
@@ -568,6 +570,11 @@ public class YahtzeeServer
   }
   
     
+  /**
+   * <p>main.</p>
+   *
+   * @param args an array of {@link java.lang.String} objects.
+   */
   public static void main(String [] args)
   {
     YahtzeeServer y = new YahtzeeServer();

@@ -2,7 +2,10 @@ package main.java.ui;
 /**
  * WinnersMenu extends JPanel and presents a ranked list of the players when
  * the game is over.
- */  
+ *
+ * @author Cory
+ * @version $Id: $Id
+ */
 
 
 import java.awt.Color;
@@ -24,7 +27,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import main.java.game.Yahtzee;
-
 public class WinnersMenu extends JPanel implements ActionListener
 {
   private Yahtzee controller;
@@ -36,11 +38,10 @@ public class WinnersMenu extends JPanel implements ActionListener
   
   /**
    * Constructor for WinnersMenu class. Takes in a mapping of players.
-   * 
+   *
    * @param finalScores The mapping of players to grand total scores.
-   * 
-   * @param jApp The controlling JApplet.      
-   */              
+   * @param jApp The controlling JApplet.
+   */
   public WinnersMenu(TreeMap<String, Integer> finalScores, Yahtzee jApp)
   {
     setLayout(new GridBagLayout());
@@ -84,9 +85,9 @@ public class WinnersMenu extends JPanel implements ActionListener
   
   /**
    * setupWinners pulls the highest to lowest player scores and writes them.
-   * 
+   *
    * @param scores The mapping of player names to grand totals.
-   */           
+   */
   public void setupWinners(TreeMap<String, Integer> scores)
   {
     String name = new String();
@@ -113,6 +114,7 @@ public class WinnersMenu extends JPanel implements ActionListener
     }
   }
   
+  /** {@inheritDoc} */
   public void actionPerformed(ActionEvent e)
   {
     String command = new String(e.getActionCommand());

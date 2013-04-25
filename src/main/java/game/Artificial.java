@@ -2,12 +2,11 @@ package main.java.game;
 /**
  * Artificial is one of the implementations of the abstract base class, Player.
  * It has a multitude of methods to make decisions and handle a Turn on it's
- * own. 
- *   
- * @author Cory Dissinger  
+ * own.
+ *
+ * @author Cory Dissinger
+ * @version $Id: $Id
  */
- 
-
 public class Artificial extends Player
 {
   private int rollsTaken;
@@ -19,9 +18,9 @@ public class Artificial extends Player
 
   /**
    * Constructor for the Artificial class.
-   * 
+   *
    * @param name The name to be assigned to this Player.
-   */           
+   */
   public Artificial(String name)
   {
     super(name);
@@ -31,14 +30,13 @@ public class Artificial extends Player
 
   /**
    * Method that runs a turn for the artificial player.
-   * 
+   *
    * executeTurn keeps track of the number of rolls that have been made, and
    * continues rolling all dice until a lower section score is available or
-   *  
+   *
    * @param turn Turn object which contains the dice and other turn information.
-   * 
-   * @return A string describing the Artificial's actions during the turn. 
-   */                        
+   * @return A string describing the Artificial's actions during the turn.
+   */
   public String executeTurn(Turn turn)
   {
     String returnMessage = new String();
@@ -66,9 +64,9 @@ public class Artificial extends Player
 
   /**
    * Returns the string containing turnInfo for use with the GameLog.
-   * 
+   *
    * @return The string containing the turn information.
-   */           
+   */
   public String getTurnInfo()
   {
     return turnInfo;
@@ -76,7 +74,7 @@ public class Artificial extends Player
 
   /**
    * Method that resets all private data members used in decision making.
-   */     
+   */
   public void resetValues()
   {
     rollsTaken = 0;
